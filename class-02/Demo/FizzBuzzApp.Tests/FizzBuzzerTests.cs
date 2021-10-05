@@ -78,9 +78,11 @@ namespace FizzBuzzApp.Tests
         }
 
         [Theory]
+        [InlineData(0)]
         [InlineData(15)]
         [InlineData(30)]
-        [InlineData(45)]
+        [InlineData(60)]
+        [InlineData(600)]
         public void FizzBuzz_returns_FizzBuzz_for_multiples_of_three_and_five(int number)
         {
             // Arrange
