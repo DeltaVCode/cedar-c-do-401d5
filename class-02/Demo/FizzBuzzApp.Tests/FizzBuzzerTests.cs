@@ -21,5 +21,18 @@ namespace FizzBuzzApp.Tests
             // Assert
             Assert.Equal("1", result);
         }
+
+        [Fact]
+        public void FizzBuzz_returns_2_given_2()
+        {
+            // Arrange
+            FizzBuzzer fb = new FizzBuzzer();
+
+            // Act
+            string result = fb.FizzBuzz(2);
+
+            // Assert
+            Assert.Equal("2", result);
+        }
     }
 }

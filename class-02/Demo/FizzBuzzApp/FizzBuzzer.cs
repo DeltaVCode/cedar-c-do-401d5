@@ -10,7 +10,7 @@ namespace FizzBuzzApp
     {
         public string FizzBuzz(int number)
         {
-            return "1";
+            return number.ToString();
         }
     }
 }
