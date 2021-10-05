@@ -8,7 +8,8 @@ namespace FizzBuzzApp.Tests
         [Fact]
         public void Test1()
         {
-
+            int zero = 1 - 2;
+            int num = 7 / zero;
         }
     }
 }
