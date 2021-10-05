@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace FizzBuzzApp
 {
-    class FizzBuzzer
+    public class FizzBuzzer
     {
-        string FizzBuzz(int number)
+        public string FizzBuzz(int number)
         {
-            throw new NotImplementedException("Going to TDD this");
+            return "1";
         }
     }
 }
