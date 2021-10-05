@@ -76,5 +76,21 @@ namespace FizzBuzzApp.Tests
             // Assert
             Assert.Equal("Buzz", result);
         }
+
+        [Theory]
+        [InlineData(15)]
+        [InlineData(30)]
+        [InlineData(45)]
+        public void FizzBuzz_returns_FizzBuzz_for_multiples_of_three_and_five(int number)
+        {
+            // Arrange
+            FizzBuzzer fb = new FizzBuzzer();
+
+            // Act
+            string result = fb.FizzBuzz(number);
+
+            // Assert
+            Assert.Equal("FizzBuzz", result);
+        }
     }
 }
