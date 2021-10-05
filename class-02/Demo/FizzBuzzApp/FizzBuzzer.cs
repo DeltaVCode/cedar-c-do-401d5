@@ -10,6 +10,11 @@ namespace FizzBuzzApp
     {
         public string FizzBuzz(int number)
         {
+            if (number < 0)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
             if (number % 15 == 0)
             {
                 return "FizzBuzz";

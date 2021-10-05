@@ -94,5 +94,22 @@ namespace FizzBuzzApp.Tests
             // Assert
             Assert.Equal("FizzBuzz", result);
         }
+
+        [Fact]
+        public void FizzBuzz_throws_for_negative_number()
+        {
+            // Arrange
+            FizzBuzzer fb = new FizzBuzzer();
+
+            // Assert
+            // JS arrow function = lambda expression in C#
+            Assert.Throws<ArgumentOutOfRangeException>(() =>
+            {
+
+                // Act
+                string result = fb.FizzBuzz(-1);
+
+            });
+        }
     }
 }
