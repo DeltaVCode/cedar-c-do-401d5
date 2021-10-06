@@ -6,7 +6,16 @@ namespace FileDemo
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            MyClass.ClearLogFile();
+
+
+
+            MyClass.ReadFromFile("test.txt");
+            MyClass.OutputEvenLinesFromFile("test.txt");
+
+            MyClass.WriteHi("hello.txt");
+
+            MyClass.WriteNames("names.csv");
         }
     }
 }
