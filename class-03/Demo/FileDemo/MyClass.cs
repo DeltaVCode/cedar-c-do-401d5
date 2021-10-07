@@ -90,5 +90,19 @@ namespace FileDemo
             // File.Create("log.txt");
             File.WriteAllText("log.txt", "");
         }
+
+        public static void WriteAmount(int amount)
+        {
+            string message = $"Amount is {amount:+##;-##;  0}";
+
+            WriteToLog(message);
+            Console.WriteLine($"Currency is {amount:C2}");
+
+        }
+
+        public static void WriteNegative(int amount)
+        {
+            WriteAmount(-amount);
+        }
     }
 }

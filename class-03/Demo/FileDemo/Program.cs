@@ -8,6 +8,10 @@ namespace FileDemo
         {
             MyClass.ClearLogFile();
 
+            MyClass.WriteAmount(50);
+            MyClass.WriteAmount(0);
+            MyClass.WriteNegative(50);
+
 
 
             MyClass.ReadFromFile("test.txt");
