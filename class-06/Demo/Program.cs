@@ -20,19 +20,22 @@ namespace Demo
             Sport[] sports = new Sport[]
             {
                 fb,
-                new Baseball(),
+                new Baseball("Little League"),
+                new Baseball("MLB"),
             };
 
             for (int i = 0; i < sports.Length; i++)
             {
                 Sport sport = sports[i];
 
+                Console.WriteLine($"Name: {sport.Name}");
                 Console.WriteLine("Team Count: {0}", sport.TeamCount);
                 sport.PrintSummary();
                 sport.PrintRules();
             }
 
             CardGame cg = new Euchre();
+            // cg.Name = "Euchre!"; // Inaccessible
             PrintCardGame(cg);
         }
 
@@ -47,6 +50,8 @@ namespace Demo
 
     abstract class Game
     {
+        public string Name { get; protected set; } // Can only assign in child class
+
         public int PlayerCount { get; set; }
 
         public abstract bool IsIndoors { get; }

@@ -4,6 +4,11 @@ namespace Demo
 {
     class Football : Sport // Concrete class, not abstract
     {
+        // Default constructor (no parameters)
+        public Football() : base("Football") // call base ctor with name
+        {
+        }
+
         public override bool IsIndoors
         {
             get { return false; } // not actually a good abstraction

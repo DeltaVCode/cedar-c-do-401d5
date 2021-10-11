@@ -4,6 +4,10 @@ namespace Demo
 {
     class Baseball : Sport
     {
+        public Baseball(string name) : base(name)
+        {
+        }
+
         public override bool IsIndoors => false; // shortcut for get { return false; }
 
         public override string[] GetEquipment()
