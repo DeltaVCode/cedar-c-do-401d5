@@ -32,6 +32,16 @@ namespace Demo
                 sport.PrintRules();
             }
 
+            CardGame cg = new Euchre();
+            PrintCardGame(cg);
+        }
+
+        static void PrintCardGame(CardGame cg)
+        {
+            Console.WriteLine(cg); // ToString() is virtual
+            Console.WriteLine("Card Count: {0}", cg.CardCount);
+            Console.WriteLine("--------------");
+            cg.PrintRules();
         }
     }
 
@@ -47,6 +57,29 @@ namespace Demo
         {
             Console.WriteLine("Player Count: {0}", PlayerCount);
             Console.WriteLine("Indoors? {0}", IsIndoors);
+        }
+    }
+
+    abstract class CardGame : Game
+    {
+        // virtual means you *may* override, but don't *have to*
+        public virtual int CardCount { get { return 52; } }
+
+        public override bool IsIndoors => true;
+    }
+
+    class Euchre : CardGame
+    {
+        public override int CardCount => 24;
+
+        public override void PrintRules()
+        {
+            Console.WriteLine("Jacks are good, sometimes");
+        }
+
+        public override string ToString()
+        {
+            return "EUCHRE!!";
         }
     }
 }
