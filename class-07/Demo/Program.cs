@@ -11,7 +11,8 @@ namespace Demo
 
 
             Football fb = new Football();
-            fb.TeamCount = 2;
+            // fb.TeamCount = 2;
+            fb.TeamNames = new[] { "Packers", "Bears" };
             fb.PlayerCount = 22;
             fb.PrintSummary();
             fb.PrintRules();
@@ -73,9 +74,12 @@ namespace Demo
         public override bool IsIndoors => true;
     }
 
-    class Euchre : CardGame
+    class Euchre : CardGame, IHasTeams
     {
         public override int CardCount => 24;
+
+        public int TeamCount { get; } = 2;
+        public string[] TeamNames { get; set; }
 
         public override void PrintRules()
         {
