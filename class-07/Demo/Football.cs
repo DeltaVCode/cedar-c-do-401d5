@@ -2,7 +2,7 @@
 
 namespace Demo
 {
-    class Football : Sport // Concrete class, not abstract
+    class Football : Sport, IHasTeams // Concrete class, not abstract
     {
         // Default constructor (no parameters)
         public Football() : base("Football") // call base ctor with name
@@ -13,6 +13,9 @@ namespace Demo
         {
             get { return false; } // not actually a good abstraction
         }
+
+        public int TeamCount => 2;
+        public string[] TeamNames { get; set; }
 
         public override string[] GetEquipment()
         {
