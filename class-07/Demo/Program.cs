@@ -21,8 +21,13 @@ namespace Demo
             Sport[] sports = new Sport[]
             {
                 fb,
+                new Golf(DateTime.Now),
                 new Baseball("Little League"),
                 new Baseball("MLB"),
+                new Golf(DateTime.Now.AddHours(36)),
+                new DoublesTennis("Venus/Serena", "Losers"),
+                new SinglesTennis(),
+                new Football{TeamNames = new[]{"Saints", "Dolphins"}},
             };
 
             for (int i = 0; i < sports.Length; i++)
@@ -30,14 +35,33 @@ namespace Demo
                 Sport sport = sports[i];
 
                 Console.WriteLine($"Name: {sport.Name}");
-                Console.WriteLine("Team Count: {0}", sport.TeamCount);
+
+                if (sport is IHasTeams teamSport) // new variable teamSport
+                {
+                    Console.WriteLine("Team Count: {0}", teamSport.TeamCount);
+                }
+                else
+                {
+                    Console.WriteLine("Solo sport!");
+                }
+
+                if (sport is Golf golfGame)
+                {
+                    Console.WriteLine("Tee Time is {0}", golfGame.TeeTime);
+                }
+
                 sport.PrintSummary();
                 sport.PrintRules();
             }
 
-            CardGame cg = new Euchre();
+            Euchre cg = new Euchre();
             // cg.Name = "Euchre!"; // Inaccessible
             PrintCardGame(cg);
+
+            PrintTeams(cg);
+
+            ProgrammingContest pc = new ProgrammingContest();
+            PrintTeams(pc);
         }
 
         static void PrintCardGame(CardGame cg)
@@ -47,6 +71,26 @@ namespace Demo
             Console.WriteLine("--------------");
             cg.PrintRules();
         }
+
+        static void PrintTeams(IHasTeams somethingWithTeams)
+        {
+            Console.WriteLine($"There are {somethingWithTeams.TeamCount} teams involved.");
+
+            if (somethingWithTeams.TeamNames == null)
+                return; // skip writing teams
+
+            Console.WriteLine("Teams:");
+            foreach (string team in somethingWithTeams.TeamNames)
+            {
+                Console.WriteLine("- " + team);
+            }
+        }
+    }
+
+    class ProgrammingContest : IHasTeams
+    {
+        public int TeamCount { get; } = 50;
+        public string[] TeamNames { get; set; }
     }
 
     abstract class Game

@@ -56,11 +56,14 @@ namespace Demo
 
     class Golf : Sport
     {
-        public Golf() : base("Walking Around")
+        public Golf(DateTime teeTime) : base("Walking Around")
         {
+            TeeTime = teeTime;
         }
 
         public override bool IsIndoors => false;
+
+        public DateTime TeeTime { get; }
 
         public override string[] GetEquipment()
         {
