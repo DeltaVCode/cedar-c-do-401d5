@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Demo
 {
@@ -7,6 +8,10 @@ namespace Demo
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+
+            List<int> numbers = new List<int>();
+            // numbers.Add("Keith"); // Compiler error
+            numbers.Add(1);
         }
     }
 }
