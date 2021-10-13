@@ -21,6 +21,7 @@ namespace DemoTests
 
             // Assert
             Assert.Empty(bag);
+            Assert.Equal(0, bag.Count);
         }
 
         [Fact]
@@ -33,9 +34,29 @@ namespace DemoTests
             bag.Add(1);
 
             // Assert
+            Assert.NotEmpty(bag);
             Assert.Equal(
                 new[] { 1 },
                 bag);
+            Assert.Equal(1, bag.Count);
+
+            // Act
+            bag.Add(2);
+
+            // Assert
+            Assert.Equal(
+                new[] { 1, 2 },
+                bag);
+            Assert.Equal(2, bag.Count);
+
+            // Act
+            bag.Add(3);
+
+            // Assert
+            Assert.Equal(
+                new[] { 1, 2, 3 },
+                bag);
+            Assert.Equal(3, bag.Count);
         }
 
     }
