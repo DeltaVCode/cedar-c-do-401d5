@@ -1,0 +1,85 @@
+class LinkedList
+{
+
+
+   public int KthFromEnd(int k)
+   {
+     int length = 0;
+
+     Node current = Head;
+     while (current != null)
+        length++;
+
+     // int length = GetLength();
+
+     let numToFind = length - k;
+
+     Node current2 = Head;
+     for (int i = 0; i < numToFind; i++)
+        current2 = current2.Next;
+
+     // for loop for (length - k)
+     return current2.Value;
+   }
+
+   public int GetLength()
+   {
+     int length = 0;
+
+     Node current = Head;
+     while (current != null)
+        length++;
+
+     return length;
+   }
+}
+
+// Act
+int result = list.KthFromEnd(2);
+
+// Assert
+Assert.Equal(12, result);
+
+
+
+
+
+// 11 -> 12 -> 13 -> 14
+//  3     2     1     0
+
+[Theory]
+[InlineData(0, 14)]
+[InlineDate(1, 13)]
+[InlineData(2, 12)]
+[InlineData(3, 11)]
+public void Theoryland(int k, int expected)
+{
+   // Arrange
+   ll = new()
+   ll.Insert(14);
+   ll.Insert(13);
+   ll.Insert(12);
+   ll.Insert(11);
+   // Make sure the list looks right
+   Assert.Equal(
+     "11 -> 12 -> 13 -> 14 -> NULL",
+     ll.ToString());
+
+   // Act
+   int result = ll.KthFromEnd(k);
+
+   // Assert
+   Assert.Equal(expected, result);
+}
+
+
+// What about arrays?
+
+Assert.Equal(
+  "5,4,3,2",
+  string.Join(",", result));
+
+// Equal will check each value for IEnumerable
+Assert.Equal(
+  new[] { 5, 4, 3, 2 }, // expected values
+  result);              // actual values
