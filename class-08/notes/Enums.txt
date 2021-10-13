@@ -1,0 +1,23 @@
+enum Suit : byte // byte can hold up to 256
+{
+  Hearts,
+  Spades,
+  Clubs,
+  Diamonds,
+}
+
+enum FaceValue : int
+{
+   two = 2,
+   three,
+   four,
+
+   king = 45,
+   ace = 1000000,
+}
+
+class Card
+{
+    public Suit Suit { get;set;}
+    public FaceValue Value { get;set; }
+}
