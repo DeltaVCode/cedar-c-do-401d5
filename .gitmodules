@@ -4,3 +4,6 @@
 [submodule "class-05/Demo/dsa"]
 	path = class-05/Demo/dsa
 	url = https://github.com/DeltaVCode-Demo/cr-dotnet-401d5-dsa
+[submodule "class-09/dsa"]
+	path = class-09/dsa
+	url = https://github.com/DeltaVCode-Demo/cr-dotnet-401d5-dsa
