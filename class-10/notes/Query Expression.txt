@@ -1,0 +1,22 @@
+// SQL!
+SELECT DISTINCT Neighbor
+FROM Features
+WHERE Neighbor != NULL
+
+
+// LINQ Query Expression
+
+(
+  from feature in features
+  where feature.properties.neighbor != null
+  select feature.properties.neighbor
+).Distinct()
+
+// let can be a "variable" in the query
+(
+  from feature in features
+  let neighbor = feature.properties.neighbor
+  where neighbor != null
+  orderby neighbor
+  select neighbor
+).Distinct()
