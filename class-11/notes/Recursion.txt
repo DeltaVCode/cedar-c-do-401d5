@@ -1,0 +1,25 @@
+function fib(n)
+{
+   // base case does not call fib
+   if (n <= 1) return n;
+
+   return fib(n-1) + fib(n-2);
+}
+
+
+sum(LinkedListNode node)
+{
+    // base case - don't call sum() again
+    if (node == null)
+        return 0;
+
+    return node.Value + sum(node.Next);
+}
+
+toString(node)
+{
+    if (node == null) return "NULL";
+
+    return $"{node.Value} -> {toString(node.Next)}";
+}
+
