@@ -12,5 +12,17 @@ namespace Demo12.Data
 
         // Create table called Technologies where a row has properties from Technology
         public DbSet<Technology> Technologies { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // Generated, but we don't need it
+            // base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Technology>()
+                .HasData(
+                    new Technology{Id = 1, Name = ".NET"},
+                    new Technology{Id = 2, Name = "JavaScript"}
+                );
+        }
     }
 } 
