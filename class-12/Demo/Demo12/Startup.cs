@@ -35,6 +35,9 @@ namespace Demo12
                 // Use that connection string with SQL Server
                 options.UseSqlServer(connectionString);
             });
+
+            // Make sure MVC knows about our Controllers
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +52,9 @@ namespace Demo12
 
             app.UseEndpoints(endpoints =>
             {
+                // Use MVC to handle endpoints, first
+                endpoints.MapControllers();
+
                 // app.get("/", ....)
                 endpoints.MapGet("/", async context =>
                 {
