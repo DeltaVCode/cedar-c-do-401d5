@@ -38,6 +38,16 @@ namespace Demo12
 
                     await context.Response.WriteAsync("Hello World!");
                 });
+
+                endpoints.MapGet("/hi", async context =>
+                {
+                    await context.Response.WriteAsync("Hi!!!!!");
+                });
+
+                endpoints.MapGet("/500", async context =>
+                {
+                    throw new ApplicationException("Boom!");
+                });
             });
         }
     }
