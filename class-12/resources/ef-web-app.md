@@ -68,7 +68,7 @@ From a terminal, run these commands. Once verified, you can use the command line
 ### Make sure Docker server is running (Mac Users)
 * **Check if the server is connected. This can be checked by entering the following into your Terminal:**
     ```bash
-    Docker ps
+    Docker ps -a
     ```
 * **If Docker server is not connected, start the server by entering the following into your Terminal:**
     ```bash
