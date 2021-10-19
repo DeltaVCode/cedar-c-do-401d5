@@ -65,6 +65,15 @@ From a terminal, run these commands. Once verified, you can use the command line
 
 ## Phase 3: Connect to a database
 
+### Make sure Docker server is running (Mac Users)
+* **Check if the server is connected. This can be checked by entering the following into your Terminal:**
+    ```bash
+    Docker ps
+    ```
+* **If Docker server is not connected, start the server by entering the following into your Terminal:**
+    ```bash
+    Docker start CONTAINERNAME
+    ```
 ### Create a `DbContext`, which allows us to communicate with Entity Framework
 
 - [ ] Add a folder called `Data`
@@ -121,17 +130,27 @@ From a terminal, run these commands. Once verified, you can use the command line
 - [ ] Finally, add the actual connection string to the end of the `appsettings.json` file
   - NOTE: Change **DBNAMEHERE** to the name of the database for your project
 
+  **For Windows Users**
   ```json
   "ConnectionStrings": {
     "DefaultConnection": "Server=(localdb)\\MSSQLLocalDB;Database=DBNAMEHERE;Trusted_Connection=True;MultipleActiveResultSets=true"
   }
   ```
+  **For Mac Users**
+  ```json
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=localhost;Database=DBNAMEHERE;User=SA;Password=PWDNAMEHERE"
+  }
+  ```
 
 - [ ] Apply migrations again ...
   - You should see "Done." ... indicating your app is connected to a running local SQL Server
-- [ ] Open **View > SQL Server Object Explorer**
-- [ ] Navigate to the `(localdb)` Server and browse to find your database
-
+- Windows Users
+  - [ ] Open **View > SQL Server Object Explorer**
+  - [ ] Navigate to the `(localdb)` Server and browse to find your database
+- Mac Users
+  - [ ] Open **Azure Data Studio**
+  - [ ] Connect to your `localhost` Server to view your database and browse to find that a table named `dbo.__EFMigrationsHistory` exists.
 ## Phase 4: Data Models and SQL Tables
 
 Now, we create C# Classes that automagically link to and become database tables
