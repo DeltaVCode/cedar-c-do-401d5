@@ -30,8 +30,12 @@ namespace Demo12
 
             app.UseEndpoints(endpoints =>
             {
+                // app.get("/", ....)
                 endpoints.MapGet("/", async context =>
                 {
+                    var req = context.Request;
+                    var res = context.Response;
+
                     await context.Response.WriteAsync("Hello World!");
                 });
             });

@@ -13,6 +13,8 @@ namespace Demo12
     {
         public static void Main(string[] args)
         {
+            // const app = express();
+            // app.listen(...);
             CreateHostBuilder(args).Build().Run();
         }
 
@@ -20,6 +22,7 @@ namespace Demo12
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    // Adds the app.get() and such
                     webBuilder.UseStartup<Startup>();
                 });
     }
