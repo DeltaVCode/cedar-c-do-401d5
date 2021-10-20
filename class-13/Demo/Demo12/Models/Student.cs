@@ -18,6 +18,7 @@ namespace Demo12.Models
         [StringLength(50)]
         public string LastName { get; set; }
 
-        public DateTime DateOfBirth { get; set; }
+        // Nullable<DateTime> is optional!
+        public DateTime? DateOfBirth { get; set; }
     }
 }

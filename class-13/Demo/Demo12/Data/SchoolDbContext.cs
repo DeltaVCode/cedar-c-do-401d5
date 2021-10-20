@@ -25,6 +25,12 @@ namespace Demo12.Data
                     new Technology{Id = 1, Name = ".NET"},
                     new Technology{Id = 2, Name = "JavaScript"}
                 );
+
+            modelBuilder.Entity<Student>()
+                .HasData(
+                    new Student { Id = 101, FirstName = "Stacey", LastName = "Teltser" },
+                    new Student { Id = 102, FirstName = "Craig", LastName = "Barkley" }
+                );
         }
     }
 } 
