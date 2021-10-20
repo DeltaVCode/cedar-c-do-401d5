@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Demo12.Data;
 using Demo12.Models;
+using Demo12.Services;
 
 namespace Demo12.Controllers
 {
@@ -14,10 +15,12 @@ namespace Demo12.Controllers
     [ApiController]
     public class TechnologiesController : ControllerBase
     {
+        private readonly ITechnologyRepository technologies;
         private readonly SchoolDbContext _context;
 
-        public TechnologiesController(SchoolDbContext context)
+        public TechnologiesController(ITechnologyRepository technologies, SchoolDbContext context)
         {
+            this.technologies = technologies;
             _context = context;
         }
 
@@ -25,14 +28,15 @@ namespace Demo12.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Technology>>> GetTechnologies()
         {
-            return await _context.Technologies.ToListAsync();
+            return await technologies.GetAll();
+            //return await _context.Technologies.ToListAsync();
         }
 
         // GET: api/Technologies/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Technology>> GetTechnology(int id)
         {
-            var technology = await _context.Technologies.FindAsync(id);
+            var technology = await technologies.GetById(id);
 
             if (technology == null)
             {
@@ -78,8 +82,10 @@ namespace Demo12.Controllers
         [HttpPost]
         public async Task<ActionResult<Technology>> PostTechnology(Technology technology)
         {
-            _context.Technologies.Add(technology);
-            await _context.SaveChangesAsync();
+            await technologies.Insert(technology);
+
+            //_context.Technologies.Add(technology);
+            //await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetTechnology", new { id = technology.Id }, technology);
         }
@@ -88,14 +94,17 @@ namespace Demo12.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTechnology(int id)
         {
-            var technology = await _context.Technologies.FindAsync(id);
-            if (technology == null)
+            var deleteSucceeded = await technologies.TryDelete(id);
+
+            //var technology = await _context.Technologies.FindAsync(id);
+            //if (technology == null)
+            if (!deleteSucceeded)
             {
                 return NotFound();
             }
 
-            _context.Technologies.Remove(technology);
-            await _context.SaveChangesAsync();
+            //_context.Technologies.Remove(technology);
+            //await _context.SaveChangesAsync();
 
             return NoContent();
         }
