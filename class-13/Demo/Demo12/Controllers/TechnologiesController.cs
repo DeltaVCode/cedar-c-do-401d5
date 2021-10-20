@@ -28,7 +28,8 @@ namespace Demo12.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Technology>>> GetTechnologies()
         {
-            return await _context.Technologies.ToListAsync();
+            return await technologies.GetAll();
+            //return await _context.Technologies.ToListAsync();
         }
 
         // GET: api/Technologies/5

@@ -1,4 +1,6 @@
 ﻿using Demo12.Data;
+using Demo12.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +15,11 @@ namespace Demo12.Services.Database
         public DatabaseTechnologyRepository(SchoolDbContext context)
         {
             _context = context;
+        }
+
+        public async Task<List<Technology>> GetAll()
+        {
+            return await _context.Technologies.ToListAsync();
         }
     }
 }
