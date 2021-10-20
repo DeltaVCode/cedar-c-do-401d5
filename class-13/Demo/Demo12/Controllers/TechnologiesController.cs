@@ -94,14 +94,17 @@ namespace Demo12.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTechnology(int id)
         {
-            var technology = await _context.Technologies.FindAsync(id);
-            if (technology == null)
+            var deleteSucceeded = await technologies.TryDelete(id);
+
+            //var technology = await _context.Technologies.FindAsync(id);
+            //if (technology == null)
+            if (!deleteSucceeded)
             {
                 return NotFound();
             }
 
-            _context.Technologies.Remove(technology);
-            await _context.SaveChangesAsync();
+            //_context.Technologies.Remove(technology);
+            //await _context.SaveChangesAsync();
 
             return NoContent();
         }

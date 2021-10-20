@@ -33,5 +33,19 @@ namespace Demo12.Services.Database
             await _context.SaveChangesAsync();
             // TODO: use API to notify Slack of new technology
         }
+
+        public async Task<bool> TryDelete(int id)
+        {
+            var technology = await _context.Technologies.FindAsync(id);
+            if (technology == null)
+            {
+                // Delete failed
+                return false;
+            }
+
+            _context.Technologies.Remove(technology);
+            await _context.SaveChangesAsync();
+            return true;
+        }
     }
 }

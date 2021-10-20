@@ -14,5 +14,12 @@ namespace Demo12.Services
 
         // Task alone ~= return void, but awaitable
         Task Insert(Technology technology);
+
+        /// <summary>
+        /// Try to delete, but return false if <paramref name="id"/> not found.
+        /// </summary>
+        /// <param name="id">The id to delete.</param>
+        /// <returns>Task with value of <c>true</c> if delete worked; false if not found.</returns>
+        Task<bool> TryDelete(int id);
     }
 }
