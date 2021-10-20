@@ -82,8 +82,10 @@ namespace Demo12.Controllers
         [HttpPost]
         public async Task<ActionResult<Technology>> PostTechnology(Technology technology)
         {
-            _context.Technologies.Add(technology);
-            await _context.SaveChangesAsync();
+            await technologies.Insert(technology);
+
+            //_context.Technologies.Add(technology);
+            //await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetTechnology", new { id = technology.Id }, technology);
         }

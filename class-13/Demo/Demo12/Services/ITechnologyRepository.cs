@@ -11,5 +11,8 @@ namespace Demo12.Services
         Task<List<Technology>> GetAll();
 
         Task<Technology> GetById(int id);
+
+        // Task alone ~= return void, but awaitable
+        Task Insert(Technology technology);
     }
 }

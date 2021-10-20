@@ -26,5 +26,12 @@ namespace Demo12.Services.Database
         {
             return await _context.Technologies.FindAsync(id);
         }
+
+        public async Task Insert(Technology technology)
+        {
+            _context.Technologies.Add(technology);
+            await _context.SaveChangesAsync();
+            // TODO: use API to notify Slack of new technology
+        }
     }
 }
