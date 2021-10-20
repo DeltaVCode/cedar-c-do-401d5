@@ -1,0 +1,30 @@
+{
+  type: "dog",
+  name: "fluffy"
+}
+
+// No Generics
+public class Animal
+{
+    public string Type { get; set; }
+    public string Name { get; set; }
+}
+
+Animal animal = Dequeue("dog");
+
+// using System.Collections.Generic;
+Queue<Animal> animals = new Queue<Animal>();
+
+// Generics
+class Animal {}
+class Dog : Animal {}
+class Cat : Animal {}
+
+Dequeue<Dog>();
+
+// Generic "constraint"
+TAnimal Dequeue<TAnimal>()
+  where TAnimal : Animal
+{
+  // ...
+}
