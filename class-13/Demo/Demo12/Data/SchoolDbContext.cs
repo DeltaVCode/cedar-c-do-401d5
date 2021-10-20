@@ -13,6 +13,8 @@ namespace Demo12.Data
         // Create table called Technologies where a row has properties from Technology
         public DbSet<Technology> Technologies { get; set; }
 
+        public DbSet<Student> Students { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Generated, but we don't need it
