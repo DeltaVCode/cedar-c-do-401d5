@@ -36,7 +36,7 @@ namespace Demo12.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Technology>> GetTechnology(int id)
         {
-            var technology = await _context.Technologies.FindAsync(id);
+            var technology = await technologies.GetById(id);
 
             if (technology == null)
             {

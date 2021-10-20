@@ -21,5 +21,10 @@ namespace Demo12.Services.Database
         {
             return await _context.Technologies.ToListAsync();
         }
+
+        public async Task<Technology> GetById(int id)
+        {
+            return await _context.Technologies.FindAsync(id);
+        }
     }
 }

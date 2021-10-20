@@ -9,5 +9,7 @@ namespace Demo12.Services
     public interface ITechnologyRepository
     {
         Task<List<Technology>> GetAll();
+
+        Task<Technology> GetById(int id);
     }
 }
