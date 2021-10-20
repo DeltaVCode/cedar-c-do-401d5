@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Demo12.Data;
 using Demo12.Models;
+using Demo12.Services;
 
 namespace Demo12.Controllers
 {
@@ -14,10 +15,12 @@ namespace Demo12.Controllers
     [ApiController]
     public class TechnologiesController : ControllerBase
     {
+        private readonly ITechnologyRepository technologies;
         private readonly SchoolDbContext _context;
 
-        public TechnologiesController(SchoolDbContext context)
+        public TechnologiesController(ITechnologyRepository technologies, SchoolDbContext context)
         {
+            this.technologies = technologies;
             _context = context;
         }
 
