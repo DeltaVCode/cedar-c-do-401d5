@@ -45,6 +45,8 @@ namespace Demo12
             // Can't be a singleton because it depends on Scoped DbContext!
             // services.AddSingleton<IStudentRepository, DatabaseStudentRepository>();
             services.AddScoped<IStudentRepository, DatabaseStudentRepository>();
+
+            services.AddScoped<ITechnologyRepository, DatabaseTechnologyRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
