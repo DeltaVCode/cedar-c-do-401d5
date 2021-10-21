@@ -19,6 +19,8 @@ namespace Demo12.Data
 
         public DbSet<Enrollment> Enrollments { get; set; }
 
+        public DbSet<Transcript> Transcripts { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Generated, but we don't need it
@@ -55,6 +57,11 @@ namespace Demo12.Data
                 .HasData(
                     new Enrollment { CourseId = 1002, StudentId = 101 },
                     new Enrollment { CourseId = 1002, StudentId = 102 }
+                );
+
+            modelBuilder.Entity<Transcript>()
+                .HasData(
+                    new Transcript { Id = 1, StudentId = 101, CourseId = 1005, Grade = Grade.A }
                 );
         }
     }

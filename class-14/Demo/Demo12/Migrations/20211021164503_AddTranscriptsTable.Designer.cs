@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Demo12.Migrations
 {
     [DbContext(typeof(SchoolDbContext))]
-    [Migration("20211021164141_AddTranscriptsTable")]
+    [Migration("20211021164503_AddTranscriptsTable")]
     partial class AddTranscriptsTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -155,6 +155,40 @@ namespace Demo12.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Demo12.Models.Transcript", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CourseId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Grade")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CourseId");
+
+                    b.HasIndex("StudentId");
+
+                    b.ToTable("Transcripts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CourseId = 1005,
+                            Grade = 0,
+                            StudentId = 101
+                        });
+                });
+
             modelBuilder.Entity("Demo12.Models.Enrollment", b =>
                 {
                     b.HasOne("Demo12.Models.Course", "Course")
@@ -165,6 +199,25 @@ namespace Demo12.Migrations
 
                     b.HasOne("Demo12.Models.Student", "Student")
                         .WithMany("Enrollments")
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Course");
+
+                    b.Navigation("Student");
+                });
+
+            modelBuilder.Entity("Demo12.Models.Transcript", b =>
+                {
+                    b.HasOne("Demo12.Models.Course", "Course")
+                        .WithMany()
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Demo12.Models.Student", "Student")
+                        .WithMany()
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
