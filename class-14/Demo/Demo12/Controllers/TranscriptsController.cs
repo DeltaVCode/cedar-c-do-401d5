@@ -34,6 +34,8 @@ namespace Demo12.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Transcript>> GetTranscript(int id)
         {
+            // TODO: Filter by studentId
+
             var transcript = await _context.Transcripts.FindAsync(id);
 
             if (transcript == null)
@@ -53,6 +55,8 @@ namespace Demo12.Controllers
             {
                 return BadRequest();
             }
+
+            // TODO: If studentId does not match transcript, return NotFound()
 
             _context.Entry(transcript).State = EntityState.Modified;
 
@@ -80,6 +84,8 @@ namespace Demo12.Controllers
         [HttpPost]
         public async Task<ActionResult<Transcript>> PostTranscript(Transcript transcript)
         {
+            // TODO: If studentId does not exist, return NotFound()
+
             _context.Transcripts.Add(transcript);
             await _context.SaveChangesAsync();
 
@@ -95,6 +101,8 @@ namespace Demo12.Controllers
             {
                 return NotFound();
             }
+
+            // TODO: If studentId does not match transcript, return NotFound()
 
             _context.Transcripts.Remove(transcript);
             await _context.SaveChangesAsync();
