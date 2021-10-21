@@ -35,7 +35,12 @@ namespace Demo12.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Course>> GetCourse(int id)
         {
-            var course = await _context.Courses.FindAsync(id);
+            var course = await _context.Courses
+                .Include(c => c.Enrollments)
+                .ThenInclude(e => e.Student)
+                // IQueryable<> does not have FindAsync()
+                // .FindAsync(id);
+                .FirstOrDefaultAsync(c => c.Id == id);
 
             if (course == null)
             {

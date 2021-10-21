@@ -15,5 +15,8 @@ namespace Demo12.Models
         public string CourseCode { get; set; }
 
         public decimal Price { get; set; }
+
+        // Reverse Nav Property
+        public List<Enrollment> Enrollments { get; set; }
     }
 }
