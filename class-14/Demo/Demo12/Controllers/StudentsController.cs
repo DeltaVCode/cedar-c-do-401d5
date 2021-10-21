@@ -116,5 +116,13 @@ namespace Demo12.Controllers
             await students.EnrollStudent(id, courseId);
             return NoContent();
         }
+
+        [HttpDelete]
+        [Route("{id}/Courses/{courseId}")]
+        public async Task<IActionResult> DropFromCourse(int id, int courseId)
+        {
+            await students.DropStudent(id, courseId);
+            return NoContent();
+        }
     }
 }

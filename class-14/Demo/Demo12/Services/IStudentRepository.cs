@@ -10,5 +10,6 @@ namespace Demo12.Services
         Task<List<Student>> GetAll();
 
         Task EnrollStudent(int studentId, int courseId);
+        Task DropStudent(int studentId, int courseId);
     }
 }
