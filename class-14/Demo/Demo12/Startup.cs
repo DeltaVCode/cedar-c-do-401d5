@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Demo12.Data;
 using Demo12.Services;
@@ -30,7 +31,8 @@ namespace Demo12
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<SchoolDbContext>(options => {
+            services.AddDbContext<SchoolDbContext>(options =>
+            {
                 // Our process.env.DATABASE_URL from js days
                 string connectionString = Configuration.GetConnectionString("DefaultConnection");
 
@@ -39,7 +41,13 @@ namespace Demo12
             });
 
             // Make sure MVC knows about our Controllers
-            services.AddControllers();
+            services
+                .AddControllers()
+                .AddNewtonsoftJson(options =>
+                {
+                    options.SerializerSettings.ReferenceLoopHandling =
+                        Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                });
 
             // Our services!
             // Can't be a singleton because it depends on Scoped DbContext!
