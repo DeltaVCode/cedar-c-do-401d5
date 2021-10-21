@@ -10,7 +10,7 @@ using Demo12.Models;
 
 namespace Demo12.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Students/{studentId}/Transcript")]
     [ApiController]
     public class TranscriptsController : ControllerBase
     {
@@ -23,9 +23,11 @@ namespace Demo12.Controllers
 
         // GET: api/Transcripts
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Transcript>>> GetTranscripts()
+        public async Task<ActionResult<IEnumerable<Transcript>>> GetTranscripts(int studentId)
         {
-            return await _context.Transcripts.ToListAsync();
+            return await _context.Transcripts
+                .Where(t => t.StudentId == studentId)
+                .ToListAsync();
         }
 
         // GET: api/Transcripts/5
