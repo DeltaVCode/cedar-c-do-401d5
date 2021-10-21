@@ -47,6 +47,8 @@ namespace Demo12
             services.AddScoped<IStudentRepository, DatabaseStudentRepository>();
 
             services.AddScoped<ITechnologyRepository, DatabaseTechnologyRepository>();
+
+            services.AddScoped<ICourseRepository, DatabaseCourseRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
