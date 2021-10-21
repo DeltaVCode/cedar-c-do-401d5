@@ -17,6 +17,8 @@ namespace Demo12.Data
 
         public DbSet<Course> Courses { get; set; }
 
+        public DbSet<Enrollment> Enrollments { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Generated, but we don't need it
@@ -44,6 +46,10 @@ namespace Demo12.Data
                     new Course { Id = 1005, CourseCode = "201d10", Price = 12 },
                     new Course { Id = 1009, CourseCode = "301d10", Price = 123.45m }
                 );
+
+            modelBuilder.Entity<Enrollment>()
+                // new { ... } makes an "anonymous type"
+                .HasKey(e => new { e.CourseId, e.StudentId });
         }
     }
 } 
