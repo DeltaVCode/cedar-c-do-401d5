@@ -55,22 +55,9 @@ namespace Demo12.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(course).State = EntityState.Modified;
-
-            try
+            if (!await courses.TryUpdate(course))
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CourseExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return NotFound();
             }
 
             return NoContent();
@@ -100,11 +87,6 @@ namespace Demo12.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
-        }
-
-        private bool CourseExists(int id)
-        {
-            return _context.Courses.Any(e => e.Id == id);
         }
     }
 }

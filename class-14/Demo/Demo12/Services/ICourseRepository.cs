@@ -9,5 +9,7 @@ namespace Demo12.Services
     public interface ICourseRepository
     {
         Task Insert(Course course);
+
+        Task<bool> TryUpdate(Course course);
     }
 }
