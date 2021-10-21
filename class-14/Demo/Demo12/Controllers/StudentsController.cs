@@ -108,5 +108,13 @@ namespace Demo12.Controllers
         {
             return _context.Students.Any(e => e.Id == id);
         }
+
+        [HttpPost]
+        [Route("{id}/Courses/{courseId}")]
+        public async Task<IActionResult> EnrollInCourse(int id, int courseId)
+        {
+            await students.EnrollStudent(id, courseId);
+            return NoContent();
+        }
     }
 }

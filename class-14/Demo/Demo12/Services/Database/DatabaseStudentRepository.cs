@@ -17,6 +17,18 @@ namespace Demo12.Services.Database
             _context = context;
         }
 
+        public async Task EnrollStudent(int studentId, int courseId)
+        {
+            var enrollment = new Enrollment
+            {
+                StudentId = studentId,
+                CourseId = courseId,
+            };
+
+            _context.Enrollments.Add(enrollment);
+            await _context.SaveChangesAsync();
+        }
+
         public async Task<List<Student>> GetAll()
         {
             var result = await _context.Students

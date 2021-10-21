@@ -8,5 +8,7 @@ namespace Demo12.Services
     {
         // Promise to return a List of Student objects
         Task<List<Student>> GetAll();
+
+        Task EnrollStudent(int studentId, int courseId);
     }
 }
