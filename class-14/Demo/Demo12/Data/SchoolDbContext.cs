@@ -50,6 +50,11 @@ namespace Demo12.Data
             modelBuilder.Entity<Enrollment>()
                 // new { ... } makes an "anonymous type"
                 .HasKey(e => new { e.CourseId, e.StudentId });
+
+            modelBuilder.Entity<Enrollment>()
+                .HasData(
+                    new Enrollment { CourseId = 42, StudentId = 904 }
+                );
         }
     }
 } 
