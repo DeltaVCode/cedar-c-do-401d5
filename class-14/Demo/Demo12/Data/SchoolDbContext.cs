@@ -15,6 +15,8 @@ namespace Demo12.Data
 
         public DbSet<Student> Students { get; set; }
 
+        public DbSet<Course> Courses { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Generated, but we don't need it
@@ -30,6 +32,13 @@ namespace Demo12.Data
                 .HasData(
                     new Student { Id = 101, FirstName = "Stacey", LastName = "Teltser" },
                     new Student { Id = 102, FirstName = "Craig", LastName = "Barkley" }
+                );
+
+            modelBuilder.Entity<Course>()
+                .HasData(
+                    new Course { Id = 1002, CourseCode = "dotnet-401d5" },
+                    new Course { Id = 1005, CourseCode = "201d10", Price = 12 },
+                    new Course { Id = 1009, CourseCode = "301d10", Price = 123.45m }
                 );
         }
     }
