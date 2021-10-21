@@ -32,7 +32,7 @@ namespace Demo12.Migrations
                         .HasColumnType("nvarchar(30)");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("money");
 
                     b.HasKey("Id");
 

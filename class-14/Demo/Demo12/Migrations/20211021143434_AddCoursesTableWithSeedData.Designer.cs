@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Demo12.Migrations
 {
     [DbContext(typeof(SchoolDbContext))]
-    [Migration("20211021142753_AddCoursesTableWithSeedData")]
+    [Migration("20211021143434_AddCoursesTableWithSeedData")]
     partial class AddCoursesTableWithSeedData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,7 +34,7 @@ namespace Demo12.Migrations
                         .HasColumnType("nvarchar(30)");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("money");
 
                     b.HasKey("Id");
 

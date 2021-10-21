@@ -35,6 +35,10 @@ namespace Demo12.Data
                 );
 
             modelBuilder.Entity<Course>()
+                .Property(c => c.Price)
+                .HasColumnType("money"); // SQL type for the decimal
+
+            modelBuilder.Entity<Course>()
                 .HasData(
                     new Course { Id = 1002, CourseCode = "dotnet-401d5" },
                     new Course { Id = 1005, CourseCode = "201d10", Price = 12 },
