@@ -53,7 +53,8 @@ namespace Demo12.Data
 
             modelBuilder.Entity<Enrollment>()
                 .HasData(
-                    new Enrollment { CourseId = 42, StudentId = 904 }
+                    new Enrollment { CourseId = 1002, StudentId = 101 },
+                    new Enrollment { CourseId = 1002, StudentId = 102 }
                 );
         }
     }
