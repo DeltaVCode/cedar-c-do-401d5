@@ -1,6 +1,7 @@
 ﻿using Demo12.Data;
 using Demo12.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,6 +14,16 @@ namespace Demo12.Services.Database
         public DatabaseCourseRepository(SchoolDbContext context)
         {
             _context = context;
+        }
+
+        public Task<List<Course>> GetAll()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<Course> GetById(int id)
+        {
+            throw new System.NotImplementedException();
         }
 
         public async Task Insert(Course course)

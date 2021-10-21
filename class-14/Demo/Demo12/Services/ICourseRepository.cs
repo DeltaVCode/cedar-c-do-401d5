@@ -8,6 +8,10 @@ namespace Demo12.Services
 {
     public interface ICourseRepository
     {
+        Task<List<Course>> GetAll();
+
+        Task<Course> GetById(int id);
+
         Task Insert(Course course);
 
         Task<bool> TryUpdate(Course course);
