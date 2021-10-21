@@ -81,8 +81,7 @@ namespace Demo12.Controllers
         [HttpPost]
         public async Task<ActionResult<Course>> PostCourse(Course course)
         {
-            _context.Courses.Add(course);
-            await _context.SaveChangesAsync();
+            await courses.Insert(course);
 
             return CreatedAtAction("GetCourse", new { id = course.Id }, course);
         }
