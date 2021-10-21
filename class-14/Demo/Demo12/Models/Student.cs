@@ -20,5 +20,9 @@ namespace Demo12.Models
 
         // Nullable<DateTime> is optional!
         public DateTime? DateOfBirth { get; set; }
+        
+
+        // Reverse Navigation Properties
+        public List<Enrollment> Enrollments { get; set; }
     }
 }

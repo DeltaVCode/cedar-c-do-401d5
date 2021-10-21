@@ -19,7 +19,14 @@ namespace Demo12.Services.Database
 
         public async Task<List<Student>> GetAll()
         {
-            return await _context.Students.ToListAsync();
+            var result = await _context.Students
+                // Go get all of each Student's Enrollments
+                .Include(s => s.Enrollments)
+                // And also include each Enrollment's Course
+                .ThenInclude(e => e.Course)
+                .ToListAsync();
+
+            return result;
 
             //return new List<Student>
             //{
