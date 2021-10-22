@@ -1,0 +1,9 @@
+Lab 12 - Room + Amenity Model/Controller
+Lab 13 - IRoomRepository + Impl
+Lab 14 - Add/Remove Room Amenity
+         in Room Repository/Controller
+----------------------------------------
+Finish 12 - Hotel Model/Controller
+Finish 13 - IHotelRepo, IAmenityRepo
+
+Finish 14 - HotelRoom Model + Controller
