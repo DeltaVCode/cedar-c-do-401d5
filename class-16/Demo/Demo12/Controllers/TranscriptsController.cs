@@ -84,17 +84,32 @@ namespace Demo12.Controllers
             return NoContent();
         }
 
-        // POST: api/Transcripts
+        // POST: api/Students/{studentId}/Transcripts
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Transcript>> PostTranscript(Transcript transcript)
+        public async Task<ActionResult<Transcript>> PostTranscript(int studentId, Transcript transcript)
         {
-            // TODO: If studentId does not exist, return NotFound()
+            var student = await _context.Students.FindAsync(studentId);
+            if (student == null)
+            {
+                return NotFound();
+            }
+
+            if (studentId != transcript.StudentId)
+            {
+                return BadRequest();
+            }
+
+            var course = await _context.Courses.FindAsync(transcript.CourseId);
+            if (course == null)
+            {
+                return BadRequest();
+            }
 
             _context.Transcripts.Add(transcript);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetTranscript", new { id = transcript.Id }, transcript);
+            return CreatedAtAction("GetTranscript", new { studentId, id = transcript.Id }, transcript);
         }
 
         // DELETE: api/Transcripts/5
