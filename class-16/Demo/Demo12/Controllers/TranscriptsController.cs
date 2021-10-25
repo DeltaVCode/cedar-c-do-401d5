@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Demo12.Data;
 using Demo12.Models;
+using Demo12.Models.DTO;
 
 namespace Demo12.Controllers
 {
@@ -87,7 +88,7 @@ namespace Demo12.Controllers
         // POST: api/Students/{studentId}/Transcripts
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Transcript>> PostTranscript(int studentId, Transcript transcript)
+        public async Task<ActionResult<Transcript>> PostTranscript(int studentId, CreateTranscriptData createData)
         {
             var student = await _context.Students.FindAsync(studentId);
             if (student == null)
@@ -95,16 +96,18 @@ namespace Demo12.Controllers
                 return NotFound();
             }
 
-            if (studentId != transcript.StudentId)
-            {
-                return BadRequest();
-            }
-
-            var course = await _context.Courses.FindAsync(transcript.CourseId);
+            var course = await _context.Courses.FindAsync(createData.CourseId);
             if (course == null)
             {
                 return BadRequest();
             }
+
+            var transcript = new Transcript
+            {
+                StudentId = studentId,
+                CourseId = createData.CourseId,
+                Grade = Enum.Parse<Grade>(createData.Grade), // enum from string
+            };
 
             _context.Transcripts.Add(transcript);
             await _context.SaveChangesAsync();
