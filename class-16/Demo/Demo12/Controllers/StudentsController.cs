@@ -109,6 +109,8 @@ namespace Demo12.Controllers
             return _context.Students.Any(e => e.Id == id);
         }
 
+        // POST: api/Students/5/Courses/17
+        // app.post('/api/Students/:id/Courses/:courseId', (req, res) => ...)
         [HttpPost]
         [Route("{id}/Courses/{courseId}")]
         public async Task<IActionResult> EnrollInCourse(int id, int courseId)
@@ -117,6 +119,7 @@ namespace Demo12.Controllers
             return NoContent();
         }
 
+        // DELETE: api/Students/5/Courses/17
         [HttpDelete]
         [Route("{id}/Courses/{courseId}")]
         public async Task<IActionResult> DropFromCourse(int id, int courseId)
