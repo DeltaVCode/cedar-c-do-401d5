@@ -35,9 +35,9 @@ namespace Demo12.Controllers
 
         // GET: api/Students/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Student>> GetStudent(int id)
+        public async Task<ActionResult<StudentDetailDto>> GetStudent(int id)
         {
-            var student = await _context.Students.FindAsync(id);
+            var student = await students.GetById(id);
 
             if (student == null)
             {

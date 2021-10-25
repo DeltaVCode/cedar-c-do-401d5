@@ -88,5 +88,37 @@ namespace Demo12.Services.Database
             //    new Student { FirstName = "Keith" },
             //};
         }
+
+        public async Task<StudentDetailDto> GetById(int id)
+        {
+            var result = await _context.Students
+                // Same query as in GetAll()
+                .Select(student => new StudentDetailDto
+                {
+                    Id = student.Id,
+                    FirstName = student.FirstName,
+                    LastName = student.LastName,
+                    DisplayName = student.FirstName + " " + student.LastName,
+
+                    EnrolledCourses = student.Enrollments
+                        .Select(e => new CourseSummary
+                        {
+                            Id = e.CourseId,
+                            Code = e.Course.CourseCode,
+                        })
+                        .ToList(), // have to convert to list
+
+                    Grades = student.Grades
+                        .Select(transcript => new TranscriptDto
+                        {
+                            CourseCode = transcript.Course.CourseCode,
+                            Grade = transcript.Grade.ToString(),
+                        })
+                        .ToList(),
+                })
+                .FirstOrDefaultAsync(student => student.Id == id);
+
+            return result;
+        }
     }
 }
