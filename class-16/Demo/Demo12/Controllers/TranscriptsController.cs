@@ -96,7 +96,8 @@ namespace Demo12.Controllers
                 return NotFound();
             }
 
-            var course = await _context.Courses.FindAsync(createData.CourseId);
+            var course = await _context.Courses
+                .FirstOrDefaultAsync(c => c.CourseCode == createData.CourseCode);
             if (course == null)
             {
                 return BadRequest();
@@ -105,7 +106,7 @@ namespace Demo12.Controllers
             var transcript = new Transcript
             {
                 StudentId = studentId,
-                CourseId = createData.CourseId,
+                CourseId = course.Id,
                 Grade = Enum.Parse<Grade>(createData.Grade), // enum from string
             };
 
