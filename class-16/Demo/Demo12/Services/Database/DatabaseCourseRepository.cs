@@ -1,5 +1,6 @@
 ﻿using Demo12.Data;
 using Demo12.Models;
+using Demo12.Models.DTO;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +17,16 @@ namespace Demo12.Services.Database
             _context = context;
         }
 
-        public Task<List<Course>> GetAll()
+        public Task<List<CourseSummary>> GetAll()
         {
-            throw new System.NotImplementedException();
+            return _context.Courses
+                .Select(course => new CourseSummary
+                {
+                    // Copy properties from Course to CourseSummary
+                    Id = course.Id,
+                    Code = course.CourseCode,
+                })
+                .ToListAsync();
         }
 
         public Task<Course> GetById(int id)
