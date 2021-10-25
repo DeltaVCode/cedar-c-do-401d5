@@ -14,22 +14,36 @@
    class BinaryTree<T> {
        public Node<T> Root {get;set;}
 
+     // Option 1
        public IEnumerable<T> PreOrder() {
-           // Option 1
            return PreOrder(Root);
+       }
 
+       private IEnumerable<T> PreOrder(Node<T> root) {
+           // Add this node's value to the output sequence
+           yield return root.Value; // T
+
+           // Traverse Left, then Right
+       }
+
+     // Option 2
+       public IEnumerable<T> PostOrder() {
            List<T> results = new List<T>();
-           PreOrder(Root, results);
+           PostOrder(Root, results);
            return results;
        }
 
-       // Option 1
-       private IEnumerable<T> PreOrder(Node root) { /* use yield return */ }
+       private IEnumerable<T> PostOrder(Node<T> root, List<T> results) {
+           // Add this node's value to the output sequence
+           results.Add(root.Value);
 
-       // Option 2
-       private IEnumerable<T> PreOrder(Node root, List<T> results) { }
+           // Traverse Left, then Right
+           if (root.Left != null) {
+               PostOrder(root.Left, results);
+           }
+       }
 
-       // InOrder() + PostOrder()
+       // InOrder()
    }
 
 4. New class in `Trees/BinarySearchTree.cs`
