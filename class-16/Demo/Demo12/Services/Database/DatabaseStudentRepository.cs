@@ -1,5 +1,6 @@
 ﻿using Demo12.Data;
 using Demo12.Models;
+using Demo12.Models.DTO;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -47,13 +48,29 @@ namespace Demo12.Services.Database
             await _context.SaveChangesAsync();
         }
 
-        public async Task<List<Student>> GetAll()
+        public async Task<List<StudentDetailDto>> GetAll()
         {
             var result = await _context.Students
                 // Go get all of each Student's Enrollments
                 .Include(s => s.Enrollments)
                 // And also include each Enrollment's Course
                 .ThenInclude(e => e.Course)
+
+                .Select(student => new StudentDetailDto
+                {
+                    Id = student.Id,
+                    FirstName = student.FirstName,
+                    LastName = student.LastName,
+                    DisplayName = student.FirstName + " " + student.LastName,
+
+                    EnrolledCourses = student.Enrollments
+                        .Select(e => new CourseSummary
+                        {
+                            Id = e.CourseId,
+                            Code = e.Course.CourseCode,
+                        })
+                        .ToList(), // have to convert to list
+                })
                 .ToListAsync();
 
             return result;

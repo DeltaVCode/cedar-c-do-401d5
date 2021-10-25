@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Demo12.Data;
 using Demo12.Models;
 using Demo12.Services;
+using Demo12.Models.DTO;
 
 namespace Demo12.Controllers
 {
@@ -26,7 +27,7 @@ namespace Demo12.Controllers
 
         // GET: api/Students
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Student>>> GetStudents()
+        public async Task<ActionResult<IEnumerable<StudentDetailDto>>> GetStudents()
         {
             return await students.GetAll();
             // return await _context.Students.ToListAsync();
