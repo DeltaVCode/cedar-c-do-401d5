@@ -14,5 +14,7 @@ namespace Demo12.Models.DTO
         public string DisplayName { get; set; }
 
         public List<CourseSummary> EnrolledCourses { get; set; }
+
+        public List<Transcript> Grades { get; set; }
     }
 }

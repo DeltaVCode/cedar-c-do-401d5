@@ -70,6 +70,9 @@ namespace Demo12.Services.Database
                             Code = e.Course.CourseCode,
                         })
                         .ToList(), // have to convert to list
+
+                    Grades = student.Grades
+                        .ToList(),
                 })
                 .ToListAsync();
 
