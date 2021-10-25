@@ -21,24 +21,29 @@ namespace Demo12.Controllers
             _context = context;
         }
 
-        // GET: api/Transcripts
+        // GET: api/Students/{studentId}/Transcripts
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Transcript>>> GetTranscripts(int studentId)
         {
+            // transcripts.GetAll(studentId)
             return await _context.Transcripts
                 .Where(t => t.StudentId == studentId)
+                .Include(t => t.Student)
+                .Include(t => t.Course)
                 .ToListAsync();
         }
 
-        // GET: api/Transcripts/5
+        // GET: api/Students/{studentId}/Transcripts/{id}
         [HttpGet("{id}")]
-        public async Task<ActionResult<Transcript>> GetTranscript(int id)
+        public async Task<ActionResult<Transcript>> GetTranscript(int studentId, int id)
         {
-            // TODO: Filter by studentId
+            var transcript = await _context.Transcripts
+                .Include(t => t.Student)
+                .Include(t => t.Course)
+                // .ThenInclude(c => c.Technology)
+                .FirstOrDefaultAsync(t => t.Id == id);
 
-            var transcript = await _context.Transcripts.FindAsync(id);
-
-            if (transcript == null)
+            if (transcript == null || transcript.StudentId != studentId)
             {
                 return NotFound();
             }
