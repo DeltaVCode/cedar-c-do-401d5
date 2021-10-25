@@ -15,6 +15,6 @@ namespace Demo12.Models.DTO
 
         public List<CourseSummary> EnrolledCourses { get; set; }
 
-        public List<Transcript> Grades { get; set; }
+        public List<TranscriptDto> Grades { get; set; }
     }
 }

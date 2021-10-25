@@ -72,6 +72,11 @@ namespace Demo12.Services.Database
                         .ToList(), // have to convert to list
 
                     Grades = student.Grades
+                        .Select(transcript => new TranscriptDto
+                        {
+                            CourseCode = transcript.Course.CourseCode,
+                            Grade = transcript.Grade.ToString(),
+                        })
                         .ToList(),
                 })
                 .ToListAsync();
