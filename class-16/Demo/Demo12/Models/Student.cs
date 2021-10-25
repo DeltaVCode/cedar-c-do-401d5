@@ -24,5 +24,7 @@ namespace Demo12.Models
 
         // Reverse Navigation Properties
         public List<Enrollment> Enrollments { get; set; }
+
+        public List<Transcript> Grades { get; set; }
     }
 }

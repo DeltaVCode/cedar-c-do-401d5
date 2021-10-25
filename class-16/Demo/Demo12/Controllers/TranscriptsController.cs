@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Demo12.Data;
 using Demo12.Models;
+using Demo12.Models.DTO;
 
 namespace Demo12.Controllers
 {
@@ -21,24 +22,29 @@ namespace Demo12.Controllers
             _context = context;
         }
 
-        // GET: api/Transcripts
+        // GET: api/Students/{studentId}/Transcripts
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Transcript>>> GetTranscripts(int studentId)
         {
+            // transcripts.GetAll(studentId)
             return await _context.Transcripts
                 .Where(t => t.StudentId == studentId)
+                .Include(t => t.Student)
+                .Include(t => t.Course)
                 .ToListAsync();
         }
 
-        // GET: api/Transcripts/5
+        // GET: api/Students/{studentId}/Transcripts/{id}
         [HttpGet("{id}")]
-        public async Task<ActionResult<Transcript>> GetTranscript(int id)
+        public async Task<ActionResult<Transcript>> GetTranscript(int studentId, int id)
         {
-            // TODO: Filter by studentId
+            var transcript = await _context.Transcripts
+                .Include(t => t.Student)
+                .Include(t => t.Course)
+                // .ThenInclude(c => c.Technology)
+                .FirstOrDefaultAsync(t => t.Id == id);
 
-            var transcript = await _context.Transcripts.FindAsync(id);
-
-            if (transcript == null)
+            if (transcript == null || transcript.StudentId != studentId)
             {
                 return NotFound();
             }
@@ -79,17 +85,35 @@ namespace Demo12.Controllers
             return NoContent();
         }
 
-        // POST: api/Transcripts
+        // POST: api/Students/{studentId}/Transcripts
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Transcript>> PostTranscript(Transcript transcript)
+        public async Task<ActionResult<Transcript>> PostTranscript(int studentId, CreateTranscriptData createData)
         {
-            // TODO: If studentId does not exist, return NotFound()
+            var student = await _context.Students.FindAsync(studentId);
+            if (student == null)
+            {
+                return NotFound();
+            }
+
+            var course = await _context.Courses
+                .FirstOrDefaultAsync(c => c.CourseCode == createData.CourseCode);
+            if (course == null)
+            {
+                return BadRequest();
+            }
+
+            var transcript = new Transcript
+            {
+                StudentId = studentId,
+                CourseId = course.Id,
+                Grade = Enum.Parse<Grade>(createData.Grade), // enum from string
+            };
 
             _context.Transcripts.Add(transcript);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetTranscript", new { id = transcript.Id }, transcript);
+            return CreatedAtAction("GetTranscript", new { studentId, id = transcript.Id }, transcript);
         }
 
         // DELETE: api/Transcripts/5

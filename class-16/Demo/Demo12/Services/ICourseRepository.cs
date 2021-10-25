@@ -1,4 +1,5 @@
 ﻿using Demo12.Models;
+using Demo12.Models.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace Demo12.Services
 {
     public interface ICourseRepository
     {
-        Task<List<Course>> GetAll();
+        Task<List<CourseSummary>> GetAll();
 
         Task<Course> GetById(int id);
 

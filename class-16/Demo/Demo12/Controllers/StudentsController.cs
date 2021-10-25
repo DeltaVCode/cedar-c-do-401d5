@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Demo12.Data;
 using Demo12.Models;
 using Demo12.Services;
+using Demo12.Models.DTO;
 
 namespace Demo12.Controllers
 {
@@ -26,7 +27,7 @@ namespace Demo12.Controllers
 
         // GET: api/Students
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Student>>> GetStudents()
+        public async Task<ActionResult<IEnumerable<StudentDetailDto>>> GetStudents()
         {
             return await students.GetAll();
             // return await _context.Students.ToListAsync();
@@ -34,9 +35,9 @@ namespace Demo12.Controllers
 
         // GET: api/Students/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Student>> GetStudent(int id)
+        public async Task<ActionResult<StudentDetailDto>> GetStudent(int id)
         {
-            var student = await _context.Students.FindAsync(id);
+            var student = await students.GetById(id);
 
             if (student == null)
             {
@@ -109,6 +110,8 @@ namespace Demo12.Controllers
             return _context.Students.Any(e => e.Id == id);
         }
 
+        // POST: api/Students/5/Courses/17
+        // app.post('/api/Students/:id/Courses/:courseId', (req, res) => ...)
         [HttpPost]
         [Route("{id}/Courses/{courseId}")]
         public async Task<IActionResult> EnrollInCourse(int id, int courseId)
@@ -117,6 +120,7 @@ namespace Demo12.Controllers
             return NoContent();
         }
 
+        // DELETE: api/Students/5/Courses/17
         [HttpDelete]
         [Route("{id}/Courses/{courseId}")]
         public async Task<IActionResult> DropFromCourse(int id, int courseId)
