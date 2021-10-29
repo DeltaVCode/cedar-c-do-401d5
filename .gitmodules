@@ -19,3 +19,6 @@
 [submodule "class-20/Demo"]
 	path = class-20/Demo
 	url = https://github.com/DeltaVCode-Demo/cr-dotnet-401d5-api
+[submodule "class-20/dsa"]
+	path = class-20/dsa
+	url = https://github.com/DeltaVCode-Demo/cr-dotnet-401d5-dsa
