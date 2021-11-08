@@ -15,7 +15,7 @@ Create the general Administrative Dashboard workflow, User Interface/Design, scr
 
 ### Guidance
 
-- You may use the `mvc` project template to streamline getting started
+- You may use the `mvc` project template (**ASP.NET Core Web App (Model-View-Controller)** in Visual Studio) to streamline getting started
 - What Data Models, Properties, Navigation Properties or DTOs do you need?
   - An ERD is a great place to start
 - Configure your core:  `DbContext` with seed data, Interfaces/Services, Routing
