@@ -150,18 +150,6 @@ use the ADO kanban board to create and manage user stories.
 
 Data Structure: Hash Tables
 
-Quiz 5
-
-#### Azure Dev Ops
-
-1. Sprint Backlog
-1. Create User stories with tasks and Acceptance tests
-1. Task Branching
-1. Time estimation
-1. PRs within Azure Dev Ops
-1. Peer Reviews
-1. Weekly Goals and Retrospectives
-
 ### Week 7: Sprint 2
 
 1. View Components
@@ -189,33 +177,7 @@ Data Structure: Graphs
 
 Quiz 6
 
-### Week 8 - Sprint 3: Azure
-
-1. Sass//SCSS
-
-- SPRINT 3 START
-
-1. Email Services
-
-- LAB: Incorporate SendGrid into project
-
-1. Azure Blob Storage
-
-- LAB: Save all product images in Azure Blob Storage
-
-1. Web Security
-
-- OWASP security Requirements
-- HTTP and SSL
-- GDPR
-- LAB: Vulnerability Report
-- END OF SPRINT 3
-
-1. Career Coaching
-
-Data Structure: Sorting Algorithms
-
-Quiz 7
+### Week 8 - React with Hooks
 
 ### Week 9 - MISC.
 
