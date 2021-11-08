@@ -26,8 +26,10 @@ Create the general Administrative Dashboard workflow, User Interface/Design, scr
 
 ## To Submit this Assignment
 
-- Create a new repository on Azure Dev Ops
+- Create a new repository in GitHub
 - Name your repo `E-Commerce-App`
+- Push your Solution File and MVC Web Project to `main`
+- Create a GitHub Action on a Pull Request and verify you have a green build; merge to `main`
 - Create a branch named `sprint-#-milestone-#`
 - Write your code
 - Commit often
