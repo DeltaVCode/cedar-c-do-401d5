@@ -28,3 +28,6 @@
 [submodule "class-27/Demo"]
 	path = class-27/Demo
 	url = https://github.com/DeltaVCode-Demo/cr-dotnet-401d5-mvc
+[submodule "class-28/Demo"]
+	path = class-28/Demo
+	url = https://github.com/DeltaVCode-Demo/cr-dotnet-401d5-mvc
