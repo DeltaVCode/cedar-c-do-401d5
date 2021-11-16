@@ -1,0 +1,5 @@
+Cart MVP:
+0. Some database model for cart
+1. Some way to add to cart
+2. Some way to view cart
+3. Add view component with cart count
