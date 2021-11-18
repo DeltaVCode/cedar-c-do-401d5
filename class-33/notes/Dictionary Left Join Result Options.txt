@@ -1,0 +1,14 @@
+class Word
+{
+    string Word 
+    string Synonym
+    string Antonym
+}
+
+List<Word>
+
+new[] { "word", "syn", "ant" }
+
+Tuple!  Tuple.Create(x, y, z)
+
+var t = (x, y, z);

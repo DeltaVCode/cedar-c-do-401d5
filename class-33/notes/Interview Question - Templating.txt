@@ -1,0 +1,20 @@
+let data = { msg: 'Hi' };
+
+/* "Imperative" */
+let el = document.createElement('h1')
+elemtn.textContent = data.msg;
+docuemtn.appendChild(el);
+
+/* Templating is *Declarative* */
+
+/* JSX */
+<h1>{data.msg}</h1>
+
+/* Handlebars */
+<h1>{{msg}}</h1>
+
+/* EJS */
+<h1><%= msg %></h1>
+
+/* Razor */
+<h1>@Model.Message</h1>
