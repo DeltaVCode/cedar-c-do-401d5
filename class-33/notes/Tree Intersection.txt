@@ -1,0 +1,33 @@
+1. Traverse tree 1
+   and add all values to a HashSet
+2. Traverse tree 2
+   if set.Contains(value2)
+   then results.Add(value2)
+   else add to set
+
+if (tree1.Root == null) yield break;
+if (tree2.Root == null) yield break;
+
+// Assume Tree with PreOrder()
+var set = new HashSet<int>();
+foreach(var value1 in tree1.PreOrder())
+   set.Add(value1);
+
+//var results = new List<int>();
+foreach(var value2 in tree2.PreOrder())
+   if (set.Contains(value2))
+       //results.Add(value2);
+       yield return value2;
+
+//return results;
+
+
+
+/// Expert Mode
+// Option 1: LINQ
+return tree1.PreOrder()
+    .Intersect(tree2.PreOrder());
+
+// Option 2: HashSet Methods!
+return new HashSet<int>(tree1.PreOrder())
+    .IntersectWith(tree2.PreOrder());

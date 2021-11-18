@@ -1,0 +1,36 @@
+E-Commerce MVP
+
+General
+1. Register
+   - One form or two? Roles?
+2. Login
+
+Admin
+1. CRUD Categories for Admin
+2. CRUD Products for Admin/Editor
+3. Product Images to Azure
+
+Customer-facing
+1. Home Page with Categories and/or Products
+2. Product Detail Page with Add to Cart
+
+Cart
+1. See Cart Items
+2. Cart Count in Header (View Component)
+
+Misc
+0. Deploy to Azure!
+1. Use Email Somewhere?!
+
+----------------------------------
+
+Bonus
+
+- Actual Checkout + Credit Card
+- Mini Cart - click in the header, see your cart!
+- More email
+- More category/product stuff
+- Product reviews
+- {slug} routing
+  - /Categories/123 => /Categories/Hockey-Gear
+  - /Product/123 => /Product/Awesome-Golf-Club 
