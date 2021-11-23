@@ -1,0 +1,12 @@
+<li class="nav-item">
+   <vc:cart-count />
+</li>
+
+
+// Shared/Components/CartCount/Default.cshtml
+@model CartCountModel
+
+<a asp-page="Cart">
+  View Cart
+  <span class="badge badge-primary">@Model.Count</span>
+</a>

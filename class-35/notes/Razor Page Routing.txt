@@ -1,0 +1,22 @@
+Pages/
+   Index.cshtml => /
+
+   Shop.cshtml + .cs
+   ---or---
+   Shop/
+      Index.cshtml + .cs       	/Shop
+      Category.cshtml + .cs	/Shop/Category/12
+      Product.cshtml + .cs     	/Shop/Product/123
+
+   Shared/
+      _Layout.cshtml
+
+
+
+
+
+// In _Layout
+
+<a asp-page="./Index">Shop Now!</a>
+
+<a asp-route-id="@Model.Id">Link!</a>
