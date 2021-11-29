@@ -15,8 +15,6 @@ Refer to the [To Do System Overview](../../TodoApi/README.md) for a complete rev
 - As a user, I would like to delete to do items that are no longer needed
 - As a user, I would like to easily mark to do items as completed
 
-Note that the display of each To Do item has changed slightly.
-
 ![To Do Application](todo.png)
 
 ## Technical Requirements / Notes

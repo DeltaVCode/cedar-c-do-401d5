@@ -25,6 +25,7 @@ The following user/developer stories detail the major functionality for this pha
 - Use Routing to provide navigation to the following pages:
   - Home (`/`) shows todo list
   - About (`/about`) shows information about the project/developer
+- Use **function components** instead of **class components**
 - Apply styling and layout using React Bootstrap Components
 - Match the provided mockup for the design
   - Use `react-bootstrap` components and theming
