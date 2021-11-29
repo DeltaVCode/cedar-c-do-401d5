@@ -52,7 +52,7 @@ The To Do Manager application has the following overall requirements:
 
 ### Example
 
-![todo.gif](https://code-401-javascript-guide.s3-us-west-2.amazonaws.com/assets/todo.gif)
+![todo.gif](todo.gif)
 
 ## Technical Requirements
 
