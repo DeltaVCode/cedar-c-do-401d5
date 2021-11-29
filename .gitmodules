@@ -46,3 +46,7 @@
 [submodule "class-35/dsa"]
 	path = class-35/dsa
 	url = https://github.com/DeltaVCode-Demo/cr-dotnet-401d5-dsa
+
+[submodule "class-36/dsa"]
+	path = class-36/dsa
+	url = https://github.com/DeltaVCode-Demo/cr-dotnet-401d5-dsa
