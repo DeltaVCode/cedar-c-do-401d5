@@ -16,4 +16,24 @@ class PeopleClassComponent extends React.Component {
   }
 }
 
-export default PeopleClassComponent;
+// export default PeopleClassComponent;
+
+// Function component must ask for props parameter
+// instead of using this.props
+function People(props) {
+  console.log('People props', props);
+  const { people, title } = props;
+
+  return (
+    <>
+      <h2>{title}</h2>
+      <ul>
+        {people.map(person => (
+          <li key={person.id}>{person.name}</li>
+        ))}
+      </ul>
+    </>
+  )
+}
+
+export default People;

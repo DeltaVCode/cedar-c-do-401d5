@@ -12,8 +12,8 @@ const data = [
 function App() {
   return (
     <div className="App">
-      <Home />
-      <People people={data} />
+      <Home message="Welcome!" isAwesome />
+      <People people={data} title="Family" />
     </div>
   );
 }

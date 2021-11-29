@@ -10,9 +10,12 @@ class HomeClassComponent extends React.Component {
 
 // export default HomeClassComponent;
 
-function Home() {
+function Home(props) {
+  console.log('Home props', props);
+  const { message } = props;
+
   return (
-    <h1>Hi from Function Component</h1>
+    <h1>{message} from Function Component</h1>
   );
 }
 
