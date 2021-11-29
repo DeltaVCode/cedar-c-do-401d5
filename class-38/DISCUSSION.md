@@ -1,25 +1,16 @@
-# Readings: React 2
+# Readings
+
+## Submission Requirements
 
 Below you will find some reading material, code samples, and some additional resources that support today's topic and the upcoming lecture.
 
 Review the Submission Instructions for guidance on completing and submitting this assignment.
 
-## Reading
+## Preparation Materials
 
-- [React - Conditional Rendering](https://reactjs.org/docs/conditional-rendering.html){:target="_blank"}
-- [React - Lists & Keys](https://reactjs.org/docs/lists-and-keys.html){:target="_blank"}
-- [React - Forms](https://reactjs.org/docs/forms.html){:target="_blank"}
-- [React - Lifting State](https://reactjs.org/docs/lifting-state-up.html){:target="_blank"}
-- [React - Composition vs Inheritance](https://reactjs.org/docs/composition-vs-inheritance.html){:target="_blank"}
-- [Thinking in React](https://reactjs.org/docs/thinking-in-react.html){:target="_blank"}
-
-## Additional Resources
-
-### Videos
-
-- Optional: [Hero Icons](https://www.youtube.com/watch?v=cVa1UiKPJN8){:target="_blank"}
-
-### Bookmark/Skim
-
-- Review (Optional): [React - Comprehensive Guide](https://tylermcginnis.com/reactjs-tutorial-a-comprehensive-guide-to-building-apps-with-react/){:target="_blank"}
-- Optional: [Heroicons](https://heroicons.com/){:target="_blank"}
+- [context api](https://reactjs.org/docs/context.html){:target="_blank"}
+- [hooks and context example](https://medium.com/swlh/snackbars-in-react-an-exercise-in-hooks-and-context-299b43fd2a2b){:target="_blank"}
+- [react context links](https://github.com/diegohaz/awesome-react-context){:target="_blank"}
+- [what is role based access control?](https://digitalguardian.com/blog/what-role-based-access-control-rbac-examples-benefits-and-more){:target="_blank"}
+- [react-cookies library](https://www.npmjs.com/package/react-cookies){:target="_blank"}
+- [react-cookie component](https://www.npmjs.com/package/react-cookie){:target="_blank"}
