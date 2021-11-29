@@ -1,4 +1,5 @@
 import './App.css';
+import { Switch, Route, Link } from 'react-router-dom';
 import Home from './components/Home';
 import People from './components/People'
 
@@ -12,8 +13,23 @@ const data = [
 function App() {
   return (
     <div className="App">
-      <Home message="Welcome!" isAwesome />
-      <People people={data} title="Family" />
+      <nav>
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/people">People</Link></li>
+        </ul>
+      </nav>
+      <Switch>
+        <Route path="/" exact>
+          <Home message="Welcome!" isAwesome />
+        </Route>
+        <Route path="/people">
+          <People people={data} title="Family" />
+        </Route>
+        <Route>
+          <h1>Not Found!</h1>
+        </Route>
+      </Switch>
     </div>
   );
 }
