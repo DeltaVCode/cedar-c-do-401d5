@@ -8,4 +8,12 @@ class HomeClassComponent extends React.Component {
   }
 }
 
-export default HomeClassComponent;
+// export default HomeClassComponent;
+
+function Home() {
+  return (
+    <h1>Hi from Function Component</h1>
+  );
+}
+
+export default Home;
