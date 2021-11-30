@@ -4,6 +4,7 @@ import Home from './components/Home';
 import Counters from './components/Counters';
 import People from './components/People'
 import PeopleForm from './components/PeopleForm';
+import { useState } from 'react';
 
 const data = [
   { id: 12, name: 'Keith' },
@@ -13,6 +14,8 @@ const data = [
 ];
 
 function App() {
+  const [peeps, setPeeps] = useState(data);
+
   return (
     <div className="App">
       <nav>
@@ -27,7 +30,7 @@ function App() {
           <Home message="Welcome!" isAwesome />
         </Route>
         <Route path="/people">
-          <People people={data} title="Family" />
+          <People people={peeps} title="Family" />
           <PeopleForm />
         </Route>
         <Route path="/counters">
