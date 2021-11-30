@@ -12,9 +12,24 @@ const data = [
   { id: 18, name: 'Craig' },
   { id: 21, name: 'Andy' },
 ];
+let nextId = 75;
 
 function App() {
   const [peeps, setPeeps] = useState(data);
+
+  function handleSave(formData) {
+    const newPeep = {
+      ...formData, // Copy all the properties into the new object
+      id: nextId++, // Guess what next Id will be from API
+    };
+
+    const newPeeps = [
+      ...peeps, // Spread = copy all of peeps into the new array
+      newPeep,
+    ];
+
+    setPeeps(newPeeps);
+  }
 
   return (
     <div className="App">
@@ -31,7 +46,7 @@ function App() {
         </Route>
         <Route path="/people">
           <People people={peeps} title="Family" />
-          <PeopleForm />
+          <PeopleForm onSave={handleSave} />
         </Route>
         <Route path="/counters">
           <Counters />

@@ -1,4 +1,5 @@
 function PeopleForm(props) {
+  const { onSave } = props;
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -7,10 +8,11 @@ function PeopleForm(props) {
     const { name } = form.elements;
 
     const formData = {
-      name,
+      name: name.value,
       // other fields here
     };
-    console.log(formData);
+    // console.log(formData);
+    onSave(formData);
 
     e.target.reset();
     e.target.elements.name.focus();
