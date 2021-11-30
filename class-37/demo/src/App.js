@@ -3,6 +3,7 @@ import { Switch, Route, Link } from 'react-router-dom';
 import Home from './components/Home';
 import Counters from './components/Counters';
 import People from './components/People'
+import PeopleForm from './components/PeopleForm';
 
 const data = [
   { id: 12, name: 'Keith' },
@@ -27,6 +28,7 @@ function App() {
         </Route>
         <Route path="/people">
           <People people={data} title="Family" />
+          <PeopleForm />
         </Route>
         <Route path="/counters">
           <Counters />
