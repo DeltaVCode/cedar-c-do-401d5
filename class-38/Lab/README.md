@@ -47,7 +47,7 @@ Logged-In User:
      - Parameters: a capability as a string.
      - Returns a boolean whether the `user` has the capabililty parameter.
 
-1. Create an `<Auth />` component with the following features:
+2. Create an `<Auth />` component with the following features:
    - Given a capability prop of type string, conditionally render components based on the `user` stored in `context`.
    - **Hide the entire interface until the user has logged in.**
    - **Implements the following RBAC rules:**
@@ -57,11 +57,10 @@ Logged-In User:
      - Logged In Users with 'create' permissions can create new items.
      - Logged In Users with 'delete' permissions can delete items.
 
-1. Implement a `<Login />` Component that has the following features:
+3. Implement a `<Login />` Component that has the following features:
    - Provide an account login screen with a form.
      - Accepts Username and Password
-     - On successful login, store the token as a cookie
-   - If a user returns and has a valid login cookie, hide the login form and consider them "Logged In"
+   - If a user returns and has a valid login token, hide the login form and consider them "Logged In"
      - Display a logout button instead of a form if they are "Logged In".
 
 ### Tools you will need to complete the above requirements
