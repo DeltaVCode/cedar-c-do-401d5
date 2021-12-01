@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 
 function Header() {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
 
   return (
     <nav>
@@ -14,7 +14,7 @@ function Header() {
         {user &&
           <>
             <li>Welcome back, {user.username}</li>
-            <li><button>Log Out</button></li>
+            <li><button onClick={() => logout()}>Log Out</button></li>
           </>
         }
       </ul>

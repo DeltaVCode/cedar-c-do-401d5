@@ -16,6 +16,10 @@ export default function Login() {
     // console.log(loginData);
 
     login(loginData);
+
+    // TODO: reset and keep focus if login fails
+    // TODO: redirect to home page if succeeds
+    form.reset();
   }
 
   return (
