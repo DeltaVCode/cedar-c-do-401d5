@@ -6,6 +6,7 @@ import People from './components/People'
 import PeopleForm from './components/PeopleForm';
 import { useState } from 'react';
 import Header from './components/Header';
+import Login from './components/auth/Login';
 
 const data = [
   { id: 12, name: 'Keith' },
@@ -45,6 +46,9 @@ function App() {
         </Route>
         <Route path="/counters">
           <Counters />
+        </Route>
+        <Route path="/login">
+          <Login />
         </Route>
         <Route>
           <h1>Not Found!</h1>
