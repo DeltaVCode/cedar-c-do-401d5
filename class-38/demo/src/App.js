@@ -1,10 +1,11 @@
 import './App.css';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Home from './components/Home';
 import Counters from './components/Counters';
 import People from './components/People'
 import PeopleForm from './components/PeopleForm';
 import { useState } from 'react';
+import Header from './components/Header';
 
 const data = [
   { id: 12, name: 'Keith' },
@@ -33,13 +34,7 @@ function App() {
 
   return (
     <div className="App">
-      <nav>
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/people">People</Link></li>
-          <li><Link to="/counters">Counters</Link></li>
-        </ul>
-      </nav>
+      <Header />
       <Switch>
         <Route path="/" exact>
           <Home message="Welcome!" isAwesome />
