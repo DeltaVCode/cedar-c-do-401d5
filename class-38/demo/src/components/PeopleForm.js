@@ -1,7 +1,7 @@
 import useAuth from "../hooks/useAuth";
 
 function PeopleForm(props) {
-  const { user } = useAuth();
+  const { hasPermission } = useAuth();
   const { onSave } = props;
 
   function handleSubmit(e) {
@@ -21,10 +21,12 @@ function PeopleForm(props) {
     e.target.elements.name.focus();
   }
 
+  let canCreate = hasPermission('create');
+
   return (
     <form onSubmit={handleSubmit}>
       <input type="text" name="name" placeholder="Name" />
-      <button type="submit" disabled={!user}>Save</button>
+      <button type="submit" disabled={!canCreate}>Save</button>
     </form>
   )
 
