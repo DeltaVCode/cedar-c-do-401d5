@@ -7,6 +7,7 @@ import PeopleForm from './components/PeopleForm';
 import { useState } from 'react';
 import Header from './components/Header';
 import Login from './components/auth/Login';
+import Auth from './components/auth';
 
 const data = [
   { id: 12, name: 'Keith' },
@@ -42,7 +43,11 @@ function App() {
         </Route>
         <Route path="/people">
           <People people={peeps} title="Family" />
-          <PeopleForm onSave={handleSave} />
+
+          {/* only show form if user is authenticated */}
+          <Auth>
+            <PeopleForm onSave={handleSave} />
+          </Auth>
         </Route>
         <Route path="/counters">
           <Counters />

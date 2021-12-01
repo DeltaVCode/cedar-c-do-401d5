@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Auth from "./auth";
 
 function Counters() {
   return (
@@ -6,8 +7,12 @@ function Counters() {
       <h1>Counters!</h1>
       <h2>Function Component</h2>
       <CounterFunctionComponent />
-      <h2>Function Component 2</h2>
-      <CounterFunctionComponent />
+
+      <Auth permission='delete'>
+        <h2>Function Component 2</h2>
+        <CounterFunctionComponent />
+      </Auth>
+
       <h2>Class Component</h2>
       <CounterClassComponent />
     </>
