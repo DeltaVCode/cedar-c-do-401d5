@@ -1,4 +1,7 @@
+import useAuth from "../hooks/useAuth";
+
 function PeopleForm(props) {
+  const { user } = useAuth();
   const { onSave } = props;
 
   function handleSubmit(e) {
@@ -21,7 +24,7 @@ function PeopleForm(props) {
   return (
     <form onSubmit={handleSubmit}>
       <input type="text" name="name" placeholder="Name" />
-      <button type="submit">Save</button>
+      <button type="submit" disabled={!user}>Save</button>
     </form>
   )
 
