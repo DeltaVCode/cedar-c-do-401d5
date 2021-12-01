@@ -1,4 +1,7 @@
+import useAuth from "../../hooks/useAuth";
+
 export default function Login() {
+  const { login } = useAuth();
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -11,6 +14,8 @@ export default function Login() {
       password: password.value,
     };
     console.log(loginData);
+
+    login(loginData);
   }
 
   return (

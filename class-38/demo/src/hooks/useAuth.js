@@ -13,7 +13,13 @@ export function AuthProvider(props) {
   const state = {
     user: null,
     // user: { username: 'Keith' },
+
+    login,
   };
+
+  async function login(loginData) {
+    console.log(loginData);
+  }
 
   return (
     <AuthContext.Provider value={state}>
