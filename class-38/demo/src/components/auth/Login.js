@@ -13,7 +13,7 @@ export default function Login() {
       username: username.value,
       password: password.value,
     };
-    console.log(loginData);
+    // console.log(loginData);
 
     login(loginData);
   }
