@@ -1,10 +1,13 @@
 import './App.css';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Home from './components/Home';
 import Counters from './components/Counters';
 import People from './components/People'
 import PeopleForm from './components/PeopleForm';
 import { useState } from 'react';
+import Header from './components/Header';
+import Login from './components/auth/Login';
+import Auth from './components/auth';
 
 const data = [
   { id: 12, name: 'Keith' },
@@ -33,23 +36,24 @@ function App() {
 
   return (
     <div className="App">
-      <nav>
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/people">People</Link></li>
-          <li><Link to="/counters">Counters</Link></li>
-        </ul>
-      </nav>
+      <Header />
       <Switch>
         <Route path="/" exact>
           <Home message="Welcome!" isAwesome />
         </Route>
         <Route path="/people">
           <People people={peeps} title="Family" />
-          <PeopleForm onSave={handleSave} />
+
+          {/* only show form if user is authenticated */}
+          <Auth>
+            <PeopleForm onSave={handleSave} />
+          </Auth>
         </Route>
         <Route path="/counters">
           <Counters />
+        </Route>
+        <Route path="/login">
+          <Login />
         </Route>
         <Route>
           <h1>Not Found!</h1>
