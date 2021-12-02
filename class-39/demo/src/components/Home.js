@@ -15,11 +15,6 @@ function Home(props) {
   console.log('Home props', props);
   const { message } = props;
 
-  useEffect(() => {
-    console.log('useEffect, no dependencies');
-  })
-
-
   return (
     <h1>{message} from Function Component</h1>
   );

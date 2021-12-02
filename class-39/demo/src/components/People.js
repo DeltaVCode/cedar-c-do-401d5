@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 // eslint-disable-next-line no-unused-vars
 class PeopleClassComponent extends React.Component {
@@ -22,15 +22,24 @@ class PeopleClassComponent extends React.Component {
 // Function component must ask for props parameter
 // instead of using this.props
 function People(props) {
-  console.log('People props', props);
   const { people, title } = props;
 
-  console.log('Count five-letters')
-  const fiveLetterCount = people.filter(p => p.name.length === 5).length;
+  // Only log if people changed
+  useEffect(() => {
+    console.log('People props', people);
+  }, [people])
+
+  const [toggle, setToggle] = useState(false);
+
+  const fiveLetterCount = useMemo(() => {
+    console.log('Count five-letters')
+    return people.filter(p => p.name.length === 5).length;
+  }, [people])
 
   return (
     <>
       <h2>{title} ({fiveLetterCount})</h2>
+      <button onClick={() => setToggle(!toggle)}>{toggle ? 'Off' : 'On'}</button>
       <ul>
         {people.map(person => (
           <li key={person.id}>{person.name}</li>
