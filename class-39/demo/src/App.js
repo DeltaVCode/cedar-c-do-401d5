@@ -8,6 +8,7 @@ import { useState } from 'react';
 import Header from './components/Header';
 import Login from './components/auth/Login';
 import Auth from './components/auth';
+import Todos from './components/Todos';
 
 const data = [
   { id: 12, name: 'Keith' },
@@ -48,6 +49,9 @@ function App() {
           <Auth>
             <PeopleForm onSave={handleSave} />
           </Auth>
+        </Route>
+        <Route path="/todos">
+          <Todos />
         </Route>
         <Route path="/counters">
           <Counters />

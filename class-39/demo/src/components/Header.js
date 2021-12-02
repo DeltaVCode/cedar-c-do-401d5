@@ -9,6 +9,7 @@ function Header() {
       <ul>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/people">People</Link></li>
+        <li><Link to="/todos">Todos</Link></li>
         <li><Link to="/counters">Counters</Link></li>
         {!user && <li><Link to="/login">Login</Link></li>}
         {user &&
