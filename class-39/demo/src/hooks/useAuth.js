@@ -16,15 +16,32 @@ export default function useAuth() {
 export function AuthProvider(props) {
   const [user, setUser] = useState(null);
 
-  const auth = useMemo(() => ({
-    // user: null,
-    // user: { username: 'Keith' },
-    user,
+  const auth = useMemo(() => {
+    console.log('New auth state!');
 
-    hasPermission,
-    login,
-    logout,
-  }), [user]);
+    function hasPermission(permission) {
+      if (!user) return false;
+
+      // No specific permission requested, but they are signed in!
+      if (!permission) return true;
+
+      // Asked for permission and user has none!
+      if (!user.permissions) return false;
+
+      // Can user do the specific thing?
+      return user.permissions.includes(permission);
+    }
+
+    return ({
+      // user: null,
+      // user: { username: 'Keith' },
+      user,
+
+      hasPermission,
+      login,
+      logout,
+    });
+  }, [user]);
 
   async function login(loginData) {
     // console.log(loginData);
@@ -50,19 +67,6 @@ export function AuthProvider(props) {
 
   function logout() {
     setUser(null);
-  }
-
-  function hasPermission(permission) {
-    if (!user) return false;
-
-    // No specific permission requested, but they are signed in!
-    if (!permission) return true;
-
-    // Asked for permission and user has none!
-    if (!user.permissions) return false;
-
-    // Can user do the specific thing?
-    return user.permissions.includes(permission);
   }
 
   return (
