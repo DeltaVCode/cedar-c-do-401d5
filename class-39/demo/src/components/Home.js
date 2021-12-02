@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 // eslint-disable-next-line no-unused-vars
 class HomeClassComponent extends React.Component {
@@ -14,6 +14,11 @@ class HomeClassComponent extends React.Component {
 function Home(props) {
   console.log('Home props', props);
   const { message } = props;
+
+  useEffect(() => {
+    console.log('useEffect, no dependencies');
+  })
+
 
   return (
     <h1>{message} from Function Component</h1>

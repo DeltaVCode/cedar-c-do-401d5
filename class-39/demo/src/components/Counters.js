@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Auth from "./auth";
 
 function Counters() {
@@ -24,6 +24,24 @@ export default Counters;
 function CounterFunctionComponent() {
   // destructure the array: first has state value, second has setter
   const [counter, setCounter] = useState(0); // Initial value = 0
+  const [toggle, setToggle] = useState(false);
+
+  useEffect(() => {
+    // Run every time component renders
+    console.log('useEffect, no dependencies');
+  });
+
+  useEffect(() => {
+    // Run once when component loads
+    console.log('useEffect, dependencies = []');
+  }, []);
+
+  useEffect(() => {
+    // Run whenever counter changes
+    console.log('useEffect, dependencies = [counter]');
+
+    document.title = `Counter: ${counter}`;
+  }, [counter]);
 
   // Define handler functions inside the function
   function handleClick() {
@@ -35,6 +53,7 @@ function CounterFunctionComponent() {
       Counter: {counter}
       {' '}
       <button onClick={handleClick}>+1</button>
+      <button onClick={() => setToggle(!toggle)}>{toggle ? 'Off' : 'On'}</button>
     </p>
   )
 }

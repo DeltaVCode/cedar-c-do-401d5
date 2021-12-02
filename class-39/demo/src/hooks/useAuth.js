@@ -1,4 +1,4 @@
-import { createContext, useContext, useMemo, useState } from "react"
+import { createContext, useContext, useEffect, useMemo, useState } from "react"
 import jwt from 'jsonwebtoken'
 
 // Normally get this from our environment
@@ -42,6 +42,14 @@ export function AuthProvider(props) {
       logout,
     });
   }, [user]);
+
+  useEffect(() => {
+    // Load token/user from cookie!
+  }, []);
+
+  useEffect(() => {
+    // Set or remove cookie!
+  }, [user])
 
   async function login(loginData) {
     // console.log(loginData);
