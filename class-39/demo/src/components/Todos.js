@@ -5,7 +5,7 @@ import Auth from "./auth";
 const todoApi = 'https://deltav-todo.azurewebsites.net/api/v1/Todos';
 
 export default function Todos() {
-  const { data, isLoading } = useFetch(todoApi);
+  const { data, isLoading, reload } = useFetch(todoApi);
   const { user } = useAuth();
 
   async function handleDelete(todo) {
@@ -22,6 +22,7 @@ export default function Todos() {
         'Authorization': `Bearer ${user.token}`
       }
     })
+    reload();
   }
 
   if (isLoading) {
