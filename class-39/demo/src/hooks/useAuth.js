@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useState } from "react"
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react"
 import jwt from 'jsonwebtoken'
 
 // Normally get this from our environment
@@ -16,21 +16,21 @@ export default function useAuth() {
 export function AuthProvider(props) {
   const [user, setUser] = useState(null);
 
+  const hasPermission = useCallback(function (permission) {
+    if (!user) return false;
+
+    // No specific permission requested, but they are signed in!
+    if (!permission) return true;
+
+    // Asked for permission and user has none!
+    if (!user.permissions) return false;
+
+    // Can user do the specific thing?
+    return user.permissions.includes(permission);
+  }, [user]);
+
   const auth = useMemo(() => {
     console.log('New auth state!');
-
-    function hasPermission(permission) {
-      if (!user) return false;
-
-      // No specific permission requested, but they are signed in!
-      if (!permission) return true;
-
-      // Asked for permission and user has none!
-      if (!user.permissions) return false;
-
-      // Can user do the specific thing?
-      return user.permissions.includes(permission);
-    }
 
     return ({
       // user: null,
@@ -41,7 +41,7 @@ export function AuthProvider(props) {
       login,
       logout,
     });
-  }, [user]);
+  }, [user, hasPermission]);
 
   useEffect(() => {
     // Load token/user from cookie!
