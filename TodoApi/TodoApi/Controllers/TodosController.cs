@@ -84,7 +84,7 @@ namespace TodoApi.Controllers
         [Authorize(Policy = "create")]
         public async Task<ActionResult<Todo>> PostTodo(Todo todo)
         {
-            DateTime dateCreated = DateTime.UtcNow.Date;
+            DateTime dateCreated = DateTime.Now.Date;
             todo.DateCreated = dateCreated;
 
             _context.Todo.Add(todo);
