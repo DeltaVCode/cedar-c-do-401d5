@@ -1,9 +1,32 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Button, Text, View } from 'react-native';
+import * as Contacts from 'expo-contacts';
 
 export default function App() {
   const [count, setCount] = useState(0);
+  const [contacts, setContacts] = useState([]);
+  const [contactsError, setContactsError] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      const { status } = await Contacts.requestPermissionsAsync();
+      if (status === 'granted') {
+        const { data } = await Contacts.getContactsAsync({
+          fields: [Contacts.Fields.Emails],
+        });
+
+        setContacts(data);
+        if (data.length > 0) {
+          const contact = data[0];
+          console.log(contact);
+        }
+      }
+      else {
+        setContactsError("Could not load Contacts!");
+      }
+    })();
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -15,6 +38,16 @@ export default function App() {
         onPress={() => setCount(count + 1)}
         title="Click me!"
       />
+
+      {contactsError ?
+        <Text style={{ color: 'red', fontWeight: 'bold' }}>{contactsError}</Text> :
+        <>
+          <Text>Contact Count: {contacts.length}</Text>
+          {contacts.slice(0, 10).map((c, i) => (
+            <Text key={i}>{c.lookupKey}</Text>
+          ))}
+        </>
+      }
 
       <StatusBar style="auto" />
     </View>
