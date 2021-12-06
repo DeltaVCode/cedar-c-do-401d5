@@ -17,7 +17,6 @@ namespace TodoApi.Models
 
         public bool Completed { get; set; }
 
-        [Column(TypeName = "DATE")]
         public DateTime? DateCreated { get; set; }
     }
 }
