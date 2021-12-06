@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Button, Text, View } from 'react-native';
+import { StyleSheet, Button, Text, View, ScrollView } from 'react-native';
 import * as Contacts from 'expo-contacts';
 
 export default function App() {
@@ -43,9 +43,11 @@ export default function App() {
         <Text style={{ color: 'red', fontWeight: 'bold' }}>{contactsError}</Text> :
         <>
           <Text>Contact Count: {contacts.length}</Text>
-          {contacts.slice(0, 10).map((c, i) => (
-            <Text key={i}>{c.lookupKey}</Text>
-          ))}
+          <ScrollView>
+            {contacts.map((c, i) => (
+              <Text key={i}>{c.lookupKey}</Text>
+            ))}
+          </ScrollView>
         </>
       }
 
