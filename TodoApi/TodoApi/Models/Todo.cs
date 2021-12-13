@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TodoApi.Models
 {
@@ -14,5 +16,7 @@ namespace TodoApi.Models
         public string AssignedTo { get; set; }
 
         public bool Completed { get; set; }
+
+        public DateTime? DateCreated { get; set; }
     }
 }

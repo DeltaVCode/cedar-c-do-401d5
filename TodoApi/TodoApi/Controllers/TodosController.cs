@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -83,6 +84,9 @@ namespace TodoApi.Controllers
         [Authorize(Policy = "create")]
         public async Task<ActionResult<Todo>> PostTodo(Todo todo)
         {
+            DateTime dateCreated = DateTime.UtcNow;
+            todo.DateCreated = dateCreated;
+
             _context.Todo.Add(todo);
             await _context.SaveChangesAsync();
 
